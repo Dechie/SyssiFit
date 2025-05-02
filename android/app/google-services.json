@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "417787636663",
+    "project_id": "flash-chat-dd742",
+    "storage_bucket": "flash-chat-dd742.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417787636663:android:4d50b399830f57c2ee1632",
+        "android_client_info": {
+          "package_name": "com.example.sissifit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6bpRyVIhugWkc0Ob5sxQpj-GvgQ2FiG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417787636663:android:81a09a9b5a007958ee1632",
+        "android_client_info": {
+          "package_name": "com.logos.flash_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6bpRyVIhugWkc0Ob5sxQpj-GvgQ2FiG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417787636663:android:125635a85d2c81c8ee1632",
+        "android_client_info": {
+          "package_name": "com.logos.flashchat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6bpRyVIhugWkc0Ob5sxQpj-GvgQ2FiG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
