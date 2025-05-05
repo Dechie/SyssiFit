@@ -1,2 +1,15 @@
 enum ExerciseTypeEnum { upperBody, lowerBody }
-enum MuscleGroup {chest, triceps,  lats, biceps, traps, shoulders, legs, glutes, hamstrings, quads}
+
+enum MuscleGroup {
+  chest,
+  triceps,
+  lats,
+  forearms,
+  biceps,
+  traps,
+  shoulders,
+  legs,
+  glutes,
+  hamstrings,
+  quads,
+}

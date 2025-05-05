@@ -11,6 +11,7 @@ class WorkoutCategoryShow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var textTh = Theme.of(context).textTheme;
+    var colorScheme = Theme.of(context).colorScheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       child: Card(
@@ -30,11 +31,14 @@ class WorkoutCategoryShow extends StatelessWidget {
                   title,
                   style: textTh.titleMedium!.copyWith(
                     fontWeight: FontWeight.w700,
+                    color: colorScheme.onPrimaryContainer,
                   ),
                 ),
                 Text(
                   description,
-                  style: textTh.bodyMedium,
+                  style: textTh.bodyMedium!.copyWith(
+                    color: colorScheme.onPrimaryContainer,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ],

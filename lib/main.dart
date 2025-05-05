@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:sissifit/screens/home.dart';
+import 'package:sissifit/screens/register_page.dart';
+import 'package:sissifit/screens/splash_page.dart';
 
 import 'firebase_options.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: SplashScreen(),
     );
   }
 }

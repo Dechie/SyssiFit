@@ -19,6 +19,7 @@ class StatShowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var colorScheme = Theme.of(context).colorScheme;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       child: Card(
@@ -34,8 +35,19 @@ class StatShowWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(number, style: numberStyle),
-              Text(label, style: labelStyle),
+              Text(
+                number,
+                style: numberStyle.copyWith(
+                  color: colorScheme.onPrimaryContainer,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Text(
+                label,
+                style: labelStyle.copyWith(
+                  color: colorScheme.onPrimaryContainer,
+                ),
+              ),
             ],
           ),
         ),

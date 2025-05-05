@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:sissifit/models/exercise.dart';
 import 'package:sissifit/utlis/enums.dart';
 
 class WorkoutCategory {
-  final String id; // Unique identifier (Firebase document ID)
+  final String id; // Unique identifier (Firestore document ID)
   final String name; // e.g., "Upper Body Focus", "Leg Day"
   final String
   description; // e.g., "Exercises for chest, shoulders, and triceps."
@@ -19,18 +20,57 @@ class WorkoutCategory {
     required this.includedMuscleGroups,
   });
 
-  // Method to check if an Exercise fits this category
+  // Factory method to create a WorkoutCategory object from a Firestore DocumentSnapshot.
+  // Used when reading WorkoutCategory documents from the '/workout_categories' collection.
+  factory WorkoutCategory.fromFirestore(DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
+    return WorkoutCategory(
+      id: doc.id, // Get the document ID from the snapshot
+      name: data['name'] as String,
+      description:
+          data['description'] as String? ??
+          '', // Handle potential null description
+      // Convert list of strings from Firestore back to List<ExerciseTypeEnum> enum values
+      includedTypes:
+          (data['includedTypes'] as List<dynamic>)
+              .map(
+                (item) => ExerciseTypeEnum.values.firstWhere(
+                  (e) =>
+                      e.toString().split('.').last ==
+                      item, // Convert enum value to string for comparison
+                  orElse:
+                      () =>
+                          ExerciseTypeEnum
+                              .upperBody, // Provide a default or handle error
+                ),
+              )
+              .toList(),
+      // Convert list of strings from Firestore back to List<MuscleGroup> enum values
+      includedMuscleGroups:
+          (data['includedMuscleGroups'] as List<dynamic>)
+              .map(
+                (item) => MuscleGroup.values.firstWhere(
+                  (e) =>
+                      e.toString().split('.').last ==
+                      item, // Convert enum value to string for comparison
+                  orElse:
+                      () =>
+                          MuscleGroup.lats, // Provide a default or handle error
+                ),
+              )
+              .toList(),
+    );
+  }
+
+  // Method to check if an Exercise fits this category based on included types and muscle groups.
   bool containsExercise(Exercise exercise) {
-    // Logic: Does the exercise's type match any included type OR
-    // do the exercise's muscle groups intersect with any included muscle group?
+    // Check if the exercise's type is included in the category's types
     if (includedTypes.contains(exercise.exerciseType) &&
-        exercise.primaryMuscleGroups.every(
+        exercise.primaryMuscleGroups.any(
           (mg) => includedMuscleGroups.contains(mg),
         )) {
       return true;
     }
-    //if (exercise.primaryMuscleGroups.any((mg) => includedMuscleGroups.contains(mg))) return true;
-    //if (exercise.secondaryMuscleGroups.any((mg) => includedMuscleGroups.contains(mg))) return true;
     return false;
   }
 }
